@@ -5,6 +5,7 @@ public class RootSegment : MonoBehaviour
     [SerializeField] private Transform growthPointTr;
     [SerializeField] private Transform[] branchPointTrs;
     [SerializeField] private PrefabCatalog prefabCatalog;
+    [SerializeField] private float mapHalfSize;
 
     [Space]
 
@@ -63,7 +64,7 @@ public class RootSegment : MonoBehaviour
 
     private void Grow()
     {
-        if (growthPointTr == null) return;
+        if (growthPointTr == null || !IsInMap(growthPointTr)) return;
 
         Quaternion effectiveRotation = growthPointTr.rotation;
 
@@ -84,7 +85,6 @@ public class RootSegment : MonoBehaviour
             effectiveRotation = Quaternion.Euler(0, Random.Range(-maxAngle, maxAngle) * deviationFactor, 0) * desiredRotation;
         }
 
-        Debug.Log("grow: " + generation.ToString());
         GameObject newSegmentGO = Instantiate(prefabCatalog.getRandom(), growthPointTr.position, effectiveRotation, growthPointTr);
         newSegmentGO.GetComponent<RootSegment>().init(generation, this.gameObject);
     }
@@ -94,9 +94,8 @@ public class RootSegment : MonoBehaviour
     {
         foreach (Transform branchPointTr in branchPointTrs)
         {
-            if (ShouldBranch())
+            if (ShouldBranch() && IsInMap(branchPointTr))
             {
-                Debug.Log("branch: " + generation.ToString());
                 GameObject newSegmentGO = Instantiate(prefabCatalog.getRandom(), branchPointTr.position, branchPointTr.rotation, branchPointTr);
                 newSegmentGO.GetComponent<RootSegment>().init(generation + 1, this.gameObject);
             }
@@ -129,5 +128,16 @@ public class RootSegment : MonoBehaviour
         probability /= generation;
 
         return Random.Range(0, 1f) < probability;
+    }
+
+
+    public bool IsInMap(Transform tr)
+    {
+        return (
+            tr.position.x > -mapHalfSize &&
+            tr.position.x < mapHalfSize &&
+            tr.position.z > -mapHalfSize &&
+            tr.position.z < mapHalfSize
+        );
     }
 }

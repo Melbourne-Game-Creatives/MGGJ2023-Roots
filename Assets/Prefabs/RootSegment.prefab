@@ -244,6 +244,7 @@ MonoBehaviour:
   - {fileID: 5941014638721635695}
   - {fileID: 5794812429108720157}
   prefabCatalog: {fileID: 11400000, guid: 06b1baeed31d4dc4f968eb10d690a356, type: 2}
+  mapHalfSize: 100
   growthDelay: 2
   maxAngle: 45
   targetingThreshold: 80
