@@ -104,7 +104,6 @@ GameObject:
   - component: {fileID: 5941014638751028767}
   - component: {fileID: 5941014638751028738}
   - component: {fileID: 5941014638751028765}
-  - component: {fileID: 5941014638751028764}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -177,20 +176,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5941014638751028764
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5941014638751028766}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &5941014639113108421
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,6 +186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5941014639113108426}
   - component: {fileID: 5941014639113108427}
+  - component: {fileID: 2827474931646629798}
   m_Layer: 0
   m_Name: RootSegment
   m_TagString: Untagged
@@ -245,7 +231,22 @@ MonoBehaviour:
   - {fileID: 5794812429108720157}
   prefabCatalog: {fileID: 11400000, guid: 06b1baeed31d4dc4f968eb10d690a356, type: 2}
   mapHalfSize: 100
+  health: 10
   growthDelay: 2
   maxAngle: 45
   targetingThreshold: 80
   directThreshold: 10
+--- !u!136 &2827474931646629798
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5941014639113108421}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 9
+  m_Direction: 2
+  m_Center: {x: 0, y: 1, z: 4}

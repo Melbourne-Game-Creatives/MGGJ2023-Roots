@@ -9,6 +9,10 @@ public class RootSegment : MonoBehaviour
 
     [Space]
 
+    [SerializeField] private float health;
+
+    [Space]
+
     [SerializeField] private float growthDelay;
     [SerializeField] private float maxAngle;
     [SerializeField][Tooltip("When to start targeting")] private float targetingThreshold;
@@ -16,17 +20,14 @@ public class RootSegment : MonoBehaviour
 
     private bool hasGrown = false;
     private Vector3 target;
-    private float distanceToTarget = Mathf.Infinity;
-    private float timeToGrow = Mathf.Infinity;
+    private float distanceToTarget;
+    private float timeToGrow;
     private int generation = 1; // to be changed by parent
 
-    private GameObject myparent;
 
-
-    public void init(int _generation, GameObject theparent)
+    public void init(int _generation)
     {
         generation = _generation;
-        myparent = theparent;
     }
 
 
@@ -40,7 +41,7 @@ public class RootSegment : MonoBehaviour
 
     private void Update()
     {
-        if (hasGrown) return;
+        if (hasGrown || health <= 0) return;
 
         if (timeToGrow <= 0) {
             hasGrown = true;
@@ -86,7 +87,7 @@ public class RootSegment : MonoBehaviour
         }
 
         GameObject newSegmentGO = Instantiate(prefabCatalog.getRandom(), growthPointTr.position, effectiveRotation, growthPointTr);
-        newSegmentGO.GetComponent<RootSegment>().init(generation, this.gameObject);
+        newSegmentGO.GetComponent<RootSegment>().init(generation);
     }
 
 
@@ -97,7 +98,7 @@ public class RootSegment : MonoBehaviour
             if (ShouldBranch() && IsInMap(branchPointTr))
             {
                 GameObject newSegmentGO = Instantiate(prefabCatalog.getRandom(), branchPointTr.position, branchPointTr.rotation, branchPointTr);
-                newSegmentGO.GetComponent<RootSegment>().init(generation + 1, this.gameObject);
+                newSegmentGO.GetComponent<RootSegment>().init(generation + 1);
             }
         }
     }
@@ -139,5 +140,29 @@ public class RootSegment : MonoBehaviour
             tr.position.z > -mapHalfSize &&
             tr.position.z < mapHalfSize
         );
+    }
+
+
+    public void TakeDamage(float damage)
+    {
+        if (health <= 0) return;
+
+        health -= damage;
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+
+    private void Die()
+    {
+        RootSegment[] segments = GetComponentsInChildren<RootSegment>();
+        foreach (RootSegment segment in segments)
+        {
+            segment.enabled = false;
+            segment.gameObject.transform.localScale = Vector3.one * 0.5f;
+        }
+        // TODO: reactivate parent
     }
 }
