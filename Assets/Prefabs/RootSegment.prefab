@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 5941014638751028765}
   - component: {fileID: 5941014638751028764}
   m_Layer: 0
-  m_Name: RootSegmentModel
+  m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

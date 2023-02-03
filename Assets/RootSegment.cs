@@ -13,13 +13,23 @@ public class RootSegment : MonoBehaviour
     [SerializeField][Tooltip("When to start targeting")] private float targetingThreshold;
     [SerializeField][Tooltip("When to aim directly")] private float directThreshold;
 
-    private bool hasGrown;
+    private bool hasGrown = false;
     private Vector3 target;
-    private float distanceToTarget;
-    private float timeToGrow;
+    private float distanceToTarget = Mathf.Infinity;
+    private float timeToGrow = Mathf.Infinity;
+    private int generation = 1; // to be changed by parent
+
+    private GameObject myparent;
 
 
-    private void Start()
+    public void init(int _generation, GameObject theparent)
+    {
+        generation = _generation;
+        myparent = theparent;
+    }
+
+
+    private void Awake()
     {
         hasGrown = false;
         target = Vector3.zero;
@@ -37,7 +47,9 @@ public class RootSegment : MonoBehaviour
             Grow();
             Branch();
         }
-        timeToGrow -= Time.deltaTime;
+        else {
+            timeToGrow -= Time.deltaTime;
+        }
     }
 
 
@@ -72,7 +84,9 @@ public class RootSegment : MonoBehaviour
             effectiveRotation = Quaternion.Euler(0, Random.Range(-maxAngle, maxAngle) * deviationFactor, 0) * desiredRotation;
         }
 
-        GameObject newSegment = Instantiate(rootSegmentPrefab, growthPointTr.position, effectiveRotation);
+        Debug.Log("grow: " + generation.ToString());
+        GameObject newSegmentGO = Instantiate(rootSegmentPrefab, growthPointTr.position, effectiveRotation, growthPointTr);
+        newSegmentGO.GetComponent<RootSegment>().init(generation, this.gameObject);
     }
 
 
@@ -82,14 +96,38 @@ public class RootSegment : MonoBehaviour
         {
             if (ShouldBranch())
             {
-                Instantiate(rootSegmentPrefab, branchPointTr.position, branchPointTr.rotation);
+                Debug.Log("branch: " + generation.ToString());
+                GameObject newSegmentGO = Instantiate(rootSegmentPrefab, branchPointTr.position, branchPointTr.rotation, branchPointTr);
+                newSegmentGO.GetComponent<RootSegment>().init(generation + 1, this.gameObject);
             }
         }
     }
 
 
-    private static bool ShouldBranch()
+    private bool ShouldBranch()
     {
-        return Random.Range(0, 1f) < 0.1f;
+        float maxProbability = 0.3f;
+        float probability;
+
+        if (generation > 3) return false; // no branching from generation 4
+
+        // Adjust based on distance
+        if (distanceToTarget > targetingThreshold)
+        {
+            probability = maxProbability;
+        }
+        else if (distanceToTarget < directThreshold)
+        {
+            probability = 0;
+        }
+        else
+        {
+            probability = (distanceToTarget - directThreshold) / (targetingThreshold - directThreshold) * maxProbability; // gradually from maxProbability at targetingThreshold to 0 at directThreshold
+        }
+
+        // Adjust based on generation
+        probability /= generation;
+
+        return Random.Range(0, 1f) < probability;
     }
 }
