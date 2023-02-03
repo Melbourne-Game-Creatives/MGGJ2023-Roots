@@ -6,16 +6,24 @@ public class RootSegment : MonoBehaviour
     [SerializeField] private Transform[] branchPointTrs;
     [SerializeField] private GameObject rootSegmentPrefab; // TODO: allow different prefabs
 
-    private float timeToGrow;
+    [Space]
+
+    [SerializeField] private float growthDelay;
+    [SerializeField] private float maxAngle;
+    [SerializeField][Tooltip("When to start targeting")] private float targetingThreshold;
+    [SerializeField][Tooltip("When to aim directly")] private float directThreshold;
+
     private bool hasGrown;
     private Vector3 target;
+    private float distanceToTarget;
+    private float timeToGrow;
 
 
     private void Start()
     {
-        timeToGrow = 2;
         hasGrown = false;
         target = Vector3.zero;
+        timeToGrow = growthDelay;
     }
 
 
@@ -25,6 +33,7 @@ public class RootSegment : MonoBehaviour
 
         if (timeToGrow <= 0) {
             hasGrown = true;
+            CalculateDistance();
             Grow();
             Branch();
         }
@@ -32,24 +41,35 @@ public class RootSegment : MonoBehaviour
     }
 
 
+    private void CalculateDistance()
+    {
+        if (growthPointTr == null) return;
+
+        distanceToTarget = Vector3.Distance(target, growthPointTr.position);
+    }
+
+
     private void Grow()
     {
         if (growthPointTr == null) return;
-        
-        float distanceToTarget = Vector3.Distance(target, growthPointTr.position);
+
         Quaternion effectiveRotation = growthPointTr.rotation;
 
-        if (distanceToTarget > 100)
+        if (distanceToTarget > targetingThreshold)
         {
             // No targeting, instead random offset
-            effectiveRotation = Quaternion.Euler(0, Random.Range(-20f, 20f), 0) * effectiveRotation;
+            effectiveRotation = Quaternion.Euler(0, Random.Range(-maxAngle, maxAngle), 0) * effectiveRotation;
+        }
+        else if (distanceToTarget < directThreshold)
+        {
+           effectiveRotation = Quaternion.LookRotation(target - growthPointTr.position);
         }
         else
         {
-            // Target the destination
+            // Target the destination, with random movement
             Quaternion desiredRotation = Quaternion.LookRotation(target - growthPointTr.position);
-            effectiveRotation = Quaternion.RotateTowards(growthPointTr.rotation, desiredRotation, 10f);
-            // FUTURE: increase angle as we approach it?
+            float deviationFactor = (distanceToTarget - directThreshold) / (targetingThreshold - directThreshold); // gradually from 1 at targetingThreshold to 0 at directThreshold
+            effectiveRotation = Quaternion.Euler(0, Random.Range(-maxAngle, maxAngle) * deviationFactor, 0) * desiredRotation;
         }
 
         GameObject newSegment = Instantiate(rootSegmentPrefab, growthPointTr.position, effectiveRotation);

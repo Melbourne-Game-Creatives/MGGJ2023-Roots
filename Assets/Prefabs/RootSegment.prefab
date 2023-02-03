@@ -244,3 +244,7 @@ MonoBehaviour:
   - {fileID: 5941014638721635695}
   - {fileID: 5794812429108720157}
   rootSegmentPrefab: {fileID: 5941014639113108421}
+  growthDelay: 2
+  maxAngle: 45
+  targetingThreshold: 80
+  directThreshold: 10
