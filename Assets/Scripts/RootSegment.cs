@@ -4,7 +4,7 @@ public class RootSegment : MonoBehaviour
 {
     [SerializeField] private Transform growthPointTr;
     [SerializeField] private Transform[] branchPointTrs;
-    [SerializeField] private GameObject rootSegmentPrefab; // TODO: allow different prefabs
+    [SerializeField] private PrefabCatalog prefabCatalog;
 
     [Space]
 
@@ -85,7 +85,7 @@ public class RootSegment : MonoBehaviour
         }
 
         Debug.Log("grow: " + generation.ToString());
-        GameObject newSegmentGO = Instantiate(rootSegmentPrefab, growthPointTr.position, effectiveRotation, growthPointTr);
+        GameObject newSegmentGO = Instantiate(prefabCatalog.getRandom(), growthPointTr.position, effectiveRotation, growthPointTr);
         newSegmentGO.GetComponent<RootSegment>().init(generation, this.gameObject);
     }
 
@@ -97,7 +97,7 @@ public class RootSegment : MonoBehaviour
             if (ShouldBranch())
             {
                 Debug.Log("branch: " + generation.ToString());
-                GameObject newSegmentGO = Instantiate(rootSegmentPrefab, branchPointTr.position, branchPointTr.rotation, branchPointTr);
+                GameObject newSegmentGO = Instantiate(prefabCatalog.getRandom(), branchPointTr.position, branchPointTr.rotation, branchPointTr);
                 newSegmentGO.GetComponent<RootSegment>().init(generation + 1, this.gameObject);
             }
         }
