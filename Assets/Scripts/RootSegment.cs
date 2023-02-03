@@ -36,6 +36,8 @@ public class RootSegment : MonoBehaviour
         hasGrown = false;
         target = Vector3.zero;
         timeToGrow = growthDelay;
+
+        CheckHovelReached();
     }
 
 
@@ -164,5 +166,15 @@ public class RootSegment : MonoBehaviour
             segment.gameObject.transform.localScale = Vector3.one * 0.5f;
         }
         // TODO: reactivate parent
+    }
+
+
+    private void CheckHovelReached()
+    {
+        CalculateDistance();
+        if (distanceToTarget < 1f)
+        {
+            print("YOU'RE HOMELESS!");
+        }
     }
 }
