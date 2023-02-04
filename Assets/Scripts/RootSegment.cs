@@ -183,13 +183,15 @@ public class RootSegment : MonoBehaviour
 
     private void Die()
     {
+        float fadeOutTime = 3f;
         RootSegment[] segments = GetComponentsInChildren<RootSegment>();
         foreach (RootSegment segment in segments)
         {
             segment.enabled = false;
-            segment.ModelTr.DOScale(new Vector3(0, segment.modelTr.localScale.y, 0), 3f);
+            segment.ModelTr.DOScale(new Vector3(0, segment.modelTr.localScale.y, 0), fadeOutTime);
         }
         ReactivateParent();
+        Destroy(gameObject, fadeOutTime + 1f);
     }
 
 
