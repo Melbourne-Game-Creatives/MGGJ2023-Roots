@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 public class RootSegment : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class RootSegment : MonoBehaviour
     private int generation = 1; // to be changed by parent
     private Vector3 modelInitialScale;
     private float health;
+
+    public Transform ModelTr { get => modelTr; }
 
 
     public void init(int _generation)
@@ -184,7 +187,7 @@ public class RootSegment : MonoBehaviour
         foreach (RootSegment segment in segments)
         {
             segment.enabled = false;
-            segment.gameObject.transform.localScale = Vector3.one * 0.5f;
+            segment.ModelTr.DOScale(new Vector3(0, segment.modelTr.localScale.y, 0), 3f);
         }
         ReactivateParent();
     }
@@ -192,6 +195,7 @@ public class RootSegment : MonoBehaviour
 
     private void ReactivateParent()
     {
+        if (transform.parent == null) return;
         RootSegment parentSegment = transform.parent.GetComponentInParent<RootSegment>();
         if (parentSegment != null)
         {
