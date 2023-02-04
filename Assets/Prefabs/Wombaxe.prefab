@@ -193,6 +193,7 @@ GameObject:
   - component: {fileID: 6799237157386194298}
   - component: {fileID: 2431479711987103792}
   - component: {fileID: 2465060814088140331}
+  - component: {fileID: 2074063930234475493}
   m_Layer: 7
   m_Name: Wombaxe
   m_TagString: Untagged
@@ -233,7 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectionQuad: {fileID: 1931671252688575567}
   speed: 5
-  attackDamage: 10
+  attackDamage: 100
   attackCooldown: 1
   TargetPos: {x: 0, y: 0, z: 0}
   initialHealth: 30
@@ -250,7 +251,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.84, y: 3.35, z: 1.39}
+  m_Size: {x: 2.64, y: 3.35, z: 2.79}
   m_Center: {x: 0, y: 1.82, z: 0}
 --- !u!54 &2465060814088140331
 Rigidbody:
@@ -268,6 +269,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!135 &2074063930234475493
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2468075592044444157}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 6.18
+  m_Center: {x: 0, y: 1.82, z: 0}
 --- !u!1 &4503415093991116715
 GameObject:
   m_ObjectHideFlags: 0

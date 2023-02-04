@@ -17,6 +17,7 @@ public class Wombaxe : MonoBehaviour, ISelectable
     [SerializeField] private HealthBar healthBar;
     private float health;
     private bool takeDamageThisFrame;
+    private bool isMovingTowardsTarget;
 
 
     private void Start()
@@ -31,6 +32,7 @@ public class Wombaxe : MonoBehaviour, ISelectable
     {
         if (Vector3.Distance(this.transform.position, TargetPos) <= 0.2f)
         {
+            isMovingTowardsTarget = false;
             return;
         }
         else
@@ -67,6 +69,7 @@ public class Wombaxe : MonoBehaviour, ISelectable
     public void SetTargetPosition(Vector3 pos)
     {
         TargetPos = pos;
+        isMovingTowardsTarget = true;
     }
 
     private void AttackRoot(RootSegment root)
@@ -96,6 +99,13 @@ public class Wombaxe : MonoBehaviour, ISelectable
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (!isMovingTowardsTarget && other.gameObject.CompareTag("Root"))
+        {
+            SetTargetPosition(other.transform.position);
+        }
+    }
 
     private void TakeDamage(float damage)
     {
