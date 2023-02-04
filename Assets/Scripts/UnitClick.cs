@@ -6,6 +6,7 @@ public class UnitClick : MonoBehaviour
 
     public LayerMask clickable;
     public LayerMask ground;
+    public AudioExclamation exclaimer;
 
     private void Start()
     {
@@ -24,10 +25,12 @@ public class UnitClick : MonoBehaviour
                 if (Input.GetKey(KeyCode.LeftControl))
                 {
                     UnitSelections.Instance.ShiftClickSelect(hit.collider.gameObject.GetComponentInChildren<ISelectable>());
+                    exclaimer.PlayExclamation();
                 }
                 else
                 {
                     UnitSelections.Instance.ClickSelect(hit.collider.gameObject.GetComponentInChildren<ISelectable>());
+                    exclaimer.PlayExclamation();
                 }
             }
             else
