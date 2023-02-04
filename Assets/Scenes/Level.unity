@@ -1335,6 +1335,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wombaxe (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2468075592044444157, guid: 55532b2658f64a745aee3018742350f2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2957612612313850695, guid: 55532b2658f64a745aee3018742350f2,
         type: 3}
       propertyPath: m_RootOrder
@@ -1403,6 +1408,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wombaxe (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2468075592044444157, guid: 55532b2658f64a745aee3018742350f2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2957612612313850695, guid: 55532b2658f64a745aee3018742350f2,
         type: 3}
@@ -1809,6 +1819,11 @@ PrefabInstance:
       objectReference: {fileID: 1263515952}
     - target: {fileID: 5313455449132006184, guid: 0fc11405107d06e44a6eb6a68da021c3,
         type: 3}
+      propertyPath: frenzyCooldown
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5313455449132006184, guid: 0fc11405107d06e44a6eb6a68da021c3,
+        type: 3}
       propertyPath: gameplayCanvas
       value: 
       objectReference: {fileID: 1712298551}
@@ -1817,6 +1832,11 @@ PrefabInstance:
       propertyPath: gameplayScreen
       value: 
       objectReference: {fileID: 1712298550}
+    - target: {fileID: 5313455449132006184, guid: 0fc11405107d06e44a6eb6a68da021c3,
+        type: 3}
+      propertyPath: growthCooldown
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 6909209899702161133, guid: 0fc11405107d06e44a6eb6a68da021c3,
         type: 3}
       propertyPath: m_RootOrder
@@ -1886,6 +1906,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1479819749}
+    - target: {fileID: 3401862489721291431, guid: ed7b86752f3216c4fb7be42029c93eb8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3401862491192269496, guid: ed7b86752f3216c4fb7be42029c93eb8,
         type: 3}
       propertyPath: m_Name
@@ -2005,6 +2030,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: WombaxeGrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 8810695041029970900, guid: ed7b86752f3216c4fb7be42029c93eb8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed7b86752f3216c4fb7be42029c93eb8, type: 3}
