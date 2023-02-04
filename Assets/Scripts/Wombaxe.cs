@@ -192,4 +192,20 @@ public class Wombaxe : MonoBehaviour, ISelectable
         print("Wombat dead!");
         Destroy(gameObject, 0.4f);
     }
+
+    public void TriggerFrenzy()
+    {
+        speed = 30f;
+        attackDamage = 500f;
+        attackCooldown = 0.1f;
+        this.transform.localScale = new Vector3(2f, 2f, 2f);
+    }
+
+    public void RemoveFrenzy()
+    {
+        speed = 7f;
+        attackDamage = 150f;
+        attackCooldown = 1f;
+        this.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+    }
 }
