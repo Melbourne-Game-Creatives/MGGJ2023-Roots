@@ -24,7 +24,7 @@ public class UnitClick : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.LeftControl))
                 {
-                    UnitSelections.Instance.ShiftClickSelect(hit.collider.gameObject.GetComponentInChildren<ISelectable>());
+                    UnitSelections.Instance.CtrlClickSelect(hit.collider.gameObject.GetComponentInChildren<ISelectable>());
                     exclaimer.PlayExclamation();
                 }
                 else

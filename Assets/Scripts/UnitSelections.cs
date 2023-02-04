@@ -28,7 +28,7 @@ public class UnitSelections : MonoBehaviour
         unitToAdd.ShowSelection();
     }
 
-    public void ShiftClickSelect(ISelectable unitToAdd)
+    public void CtrlClickSelect(ISelectable unitToAdd)
     {
         if (!unitsSelected.Contains(unitToAdd))
         {
@@ -44,7 +44,11 @@ public class UnitSelections : MonoBehaviour
 
     public void DragSelect(ISelectable unitToAdd)
     {
-
+        if (!unitsSelected.Contains(unitToAdd))
+        {
+            unitsSelected.Add(unitToAdd);
+            unitToAdd.ShowSelection();
+        }
     }
 
     public void Deselect(ISelectable unitToRemove)

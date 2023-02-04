@@ -64,6 +64,11 @@ public class Wombaxe : MonoBehaviour, ISelectable
         }
     }
 
+    public GameObject GetGameObject()
+    {
+        return gameObject;
+    }
+
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Root"))
