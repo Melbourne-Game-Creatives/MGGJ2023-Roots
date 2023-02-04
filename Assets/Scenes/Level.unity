@@ -660,7 +660,7 @@ MonoBehaviour:
   lookDistance: {x: 0, y: 0, z: -80}
   maxDistance: -100
   minDistance: -10
-  moveSpeed: 10
+  moveSpeed: 30
   moveBoostSpeed: 20
   zoomSpeedMultiplier: 2
   canRotate: 0
