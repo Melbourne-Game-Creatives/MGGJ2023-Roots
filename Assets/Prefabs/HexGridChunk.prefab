@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 5549334731810517002}
   - component: {fileID: 6499192824607059964}
   - component: {fileID: 4736468084883088765}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HexMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}

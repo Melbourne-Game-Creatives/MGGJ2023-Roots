@@ -62,10 +62,9 @@ public class RootSegment : MonoBehaviour
     }
 
 
-        public bool IsInMap(Transform tr)
+    public bool IsInMap(Transform tr)
     {
-        return true; // TODO: waiting for a collider on the ground
-        //return Physics.Raycast(growthPointTr.position, Vector3.down, 100f, LayerMask.NameToLayer("ground"));
+        return Physics.Raycast(growthPointTr.position + Vector3.up, Vector3.down, 100f, 1 << LayerMask.NameToLayer("Ground"));
     }
 
 
