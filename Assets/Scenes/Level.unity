@@ -820,7 +820,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1724112358}
   - component: {fileID: 1724112357}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HexGrid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -846,6 +846,7 @@ MonoBehaviour:
     type: 3}
   cells: []
   chunks: []
+  boxCollider: {fileID: 0}
   strength: 11.95
   frequency: 0.05
   octaves: 3

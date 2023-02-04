@@ -23,9 +23,9 @@ public static class HexMetrics {
 	public static Vector3 GetCenter(int x, int z)
 	{
 		Vector3 position;
-		position.x = (x + z * 0.5f - z / 2) * (HexMetrics.InnerRadius * 2f);
+		position.x = (x + z * 0.5f - z / 2) * (InnerRadius * 2f);
 		position.y = 0f;
-		position.z = z * (HexMetrics.OuterRadius * 1.5f);
+		position.z = z * (OuterRadius * 1.5f);
 
 		return position;
 	}
