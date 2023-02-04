@@ -2100,6 +2100,16 @@ PrefabInstance:
       propertyPath: loseScreen
       value: 
       objectReference: {fileID: 1290350988}
+    - target: {fileID: 5313455449132006184, guid: 0fc11405107d06e44a6eb6a68da021c3,
+        type: 3}
+      propertyPath: wombatSpawner
+      value: 
+      objectReference: {fileID: 1263515952}
+    - target: {fileID: 5313455449132006184, guid: 0fc11405107d06e44a6eb6a68da021c3,
+        type: 3}
+      propertyPath: gameplayScreen
+      value: 
+      objectReference: {fileID: 1712298550}
     - target: {fileID: 6909209899702161133, guid: 0fc11405107d06e44a6eb6a68da021c3,
         type: 3}
       propertyPath: m_RootOrder
@@ -2247,6 +2257,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LoseScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 5504759076777554491, guid: b873a8fb39fddb94db4ee0f4699a6cde,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5504759076777554495, guid: b873a8fb39fddb94db4ee0f4699a6cde,
         type: 3}

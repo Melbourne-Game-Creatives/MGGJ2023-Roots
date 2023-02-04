@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 public class Burrow : MonoBehaviour
 {
     [SerializeField] private Canvas loseScreen;
+    [SerializeField] private Canvas gameplayScreen;
+    [SerializeField] private WombatSpawner wombatSpawner;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -25,6 +27,14 @@ public class Burrow : MonoBehaviour
 
     public void ShowEndScreen()
     {
+        foreach (ISelectable unit in UnitSelections.Instance.unitList)
+        {
+            unit.GetGameObject().GetComponent<Wombaxe>().Die();
+        }
+
+        wombatSpawner.gameObject.SetActive(false);
+
+        gameplayScreen.gameObject.SetActive(false);
         loseScreen.gameObject.SetActive(true);
     }
 
