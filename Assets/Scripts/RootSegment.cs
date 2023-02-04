@@ -186,6 +186,7 @@ public class RootSegment : MonoBehaviour
         RootSegment[] segments = GetComponentsInChildren<RootSegment>();
         foreach (RootSegment segment in segments)
         {
+            segment.ModelTr.GetComponent<CapsuleCollider>().enabled = false;
             segment.enabled = false;
             segment.ModelTr.DOScale(new Vector3(0, segment.modelTr.localScale.y, 0), fadeOutTime);
         }

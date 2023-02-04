@@ -57,8 +57,6 @@ public class MapRootSpawner : MonoBehaviour
         if (Random.Range(0, 1f) > 0.5f) randomX *= -1;
         if (Random.Range(0, 1f) > 0.5f) randomZ *= -1;
 
-        print($"Spawning at {randomX}, {randomZ}");
-
         GameObject newGO = Instantiate(rootPrefabs.getRandom(), new Vector3(randomX, 0, randomZ), Quaternion.identity);
         newGO.transform.LookAt(Vector3.zero);
     }
