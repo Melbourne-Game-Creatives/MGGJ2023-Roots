@@ -20,6 +20,16 @@ public static class HexMetrics {
 		new (0f, 0f, OuterRadius)
 	};
 
+	public static Vector3 GetCenter(int x, int z)
+	{
+		Vector3 position;
+		position.x = (x + z * 0.5f - z / 2) * (HexMetrics.InnerRadius * 2f);
+		position.y = 0f;
+		position.z = z * (HexMetrics.OuterRadius * 1.5f);
+
+		return position;
+	}
+	
 	public static Vector3 GetFirstCorner (HexDirection direction) {
 		return Corners[(int)direction];
 	}
