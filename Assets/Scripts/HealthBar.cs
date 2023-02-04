@@ -7,10 +7,18 @@ public class HealthBar : MonoBehaviour
 {
     [SerializeField] private Image healthBarImage;
 
+    private Transform camTr;
+
+
+    private void Awake()
+    {
+        camTr = Camera.main.transform;
+    }
+
 
     private void Update()
     {
-        transform.forward = new Vector3(Camera.main.transform.forward.x, transform.forward.y, Camera.main.transform.forward.z);
+        transform.forward = new Vector3(camTr.forward.x, camTr.forward.y, camTr.forward.z);
     }
 
 
