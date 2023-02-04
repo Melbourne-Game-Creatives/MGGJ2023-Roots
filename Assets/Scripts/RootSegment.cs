@@ -211,6 +211,7 @@ public class RootSegment : MonoBehaviour
         if (distanceToTarget < 1f)
         {
             print("YOU'RE HOMELESS!");
+            FindObjectOfType<Burrow>().ShowEndScreen();
         }
     }
 }
