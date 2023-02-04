@@ -62,4 +62,12 @@ public class Burrow : MonoBehaviour
             unit.GetGameObject().GetComponent<Wombaxe>().RemoveFrenzy();
         }
     }
+
+    public void WombaxeGrow()
+    {
+        foreach (ISelectable unit in UnitSelections.Instance.unitList)
+        {
+            unit.GetGameObject().GetComponent<Wombaxe>().Grow();
+        }
+    }
 }

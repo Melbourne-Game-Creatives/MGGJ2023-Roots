@@ -187,7 +187,7 @@ public class Wombaxe : MonoBehaviour, ISelectable
     }
 
 
-    private void Die()
+    public void Die()
     {
         UnitSelections.Instance.unitsSelected.Remove(this);
         print("Wombat dead!");
@@ -208,5 +208,13 @@ public class Wombaxe : MonoBehaviour, ISelectable
         attackDamage = 150f;
         attackCooldown = 1f;
         this.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+    }
+
+    public void Grow()
+    {
+        speed *= 1.5f;
+        attackDamage *= 1.5f;
+        attackCooldown *= 0.5f;
+        this.transform.localScale *= 1.5f;
     }
 }
