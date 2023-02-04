@@ -100,12 +100,15 @@ public class Wombaxe : MonoBehaviour, ISelectable
     public void SetTargetPosition(Vector3 pos)
     {
         TargetPos = pos;
-        transform.LookAt(TargetPos);
+        var lookAtPos = pos;
+        lookAtPos.y = transform.position.y;
+        transform.LookAt(lookAtPos);
         isMovingTowardsTarget = true;
     }
 
     private void AttackRoot(RootSegment root)
     {
+        animator.SetBool("Cutting", true);
         if (currentCooldown > 0)
         {
             currentCooldown -= Time.deltaTime;
@@ -129,6 +132,11 @@ public class Wombaxe : MonoBehaviour, ISelectable
             AttackRoot(collision.gameObject.GetComponentInParent<RootSegment>());
             takeDamageThisFrame = true;
         }
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+        animator.SetBool("Cutting", false);
     }
 
     private void OnTriggerStay(Collider other)
