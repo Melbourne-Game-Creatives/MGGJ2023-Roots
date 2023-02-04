@@ -6,10 +6,12 @@ public class RootSegment : MonoBehaviour
     [SerializeField] private Transform[] branchPointTrs;
     [SerializeField] private PrefabCatalog prefabCatalog;
     [SerializeField] private float mapHalfSize;
+    [SerializeField] private Transform modelTr;
 
     [Space]
 
     [SerializeField] private float health;
+    [SerializeField][Tooltip("Health points per second")] private float healthRate;
 
     [Space]
 
@@ -43,9 +45,13 @@ public class RootSegment : MonoBehaviour
 
     private void Update()
     {
-        if (hasGrown || health <= 0) return;
+        if (health <= 0) return;
 
-        if (timeToGrow <= 0) {
+        if (hasGrown)
+        {
+            UpdateHealth();
+        }
+        else if (timeToGrow <= 0) {
             hasGrown = true;
             CalculateDistance();
             Grow();
@@ -54,6 +60,36 @@ public class RootSegment : MonoBehaviour
         else {
             timeToGrow -= Time.deltaTime;
         }
+    }
+
+
+        public bool IsInMap(Transform tr)
+    {
+        return (
+            tr.position.x > -mapHalfSize &&
+            tr.position.x < mapHalfSize &&
+            tr.position.z > -mapHalfSize &&
+            tr.position.z < mapHalfSize
+        );
+    }
+
+
+    public void TakeDamage(float damage)
+    {
+        if (health <= 0) return;
+
+        health -= damage;
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+
+    public void Reactivate()
+    {
+        timeToGrow = growthDelay;
+        hasGrown = false;
     }
 
 
@@ -134,33 +170,11 @@ public class RootSegment : MonoBehaviour
     }
 
 
-    public bool IsInMap(Transform tr)
+    private void UpdateHealth()
     {
-        return (
-            tr.position.x > -mapHalfSize &&
-            tr.position.x < mapHalfSize &&
-            tr.position.z > -mapHalfSize &&
-            tr.position.z < mapHalfSize
-        );
-    }
-
-
-    public void TakeDamage(float damage)
-    {
-        if (health <= 0) return;
-
-        health -= damage;
-        if (health <= 0)
-        {
-            Die();
-        }
-    }
-
-
-    public void Reactivate()
-    {
-        timeToGrow = growthDelay;
-        hasGrown = false;
+        health += healthRate * Time.deltaTime;
+        // TODO: for now, make it a bit thicker (could be animated)
+        modelTr.localScale = modelTr.localScale + new Vector3(0.1f, 0, 0.1f) * Time.deltaTime;
     }
 
 
