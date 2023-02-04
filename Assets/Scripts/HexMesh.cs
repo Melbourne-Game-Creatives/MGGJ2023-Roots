@@ -11,11 +11,11 @@ public class HexMesh : MonoBehaviour {
 	[NonSerialized] private List<Color> _colors;
 	[NonSerialized] private List<int> _triangles;
 
-	public MeshCollider meshCollider;
+	// public MeshCollider meshCollider;
 
 	public void Awake () {
 		GetComponent<MeshFilter>().mesh = _hexMesh = new Mesh();
-		meshCollider = gameObject.AddComponent<MeshCollider>();
+		// meshCollider = gameObject.AddComponent<MeshCollider>();
 		_hexMesh.name = "Hex Mesh";
 	}
 
@@ -39,7 +39,7 @@ public class HexMesh : MonoBehaviour {
 		_hexMesh.SetTriangles(_triangles, 0);
 		ListPool<int>.Add(_triangles);
 		_hexMesh.RecalculateNormals();
-		meshCollider.sharedMesh = _hexMesh;
+		// meshCollider.sharedMesh = _hexMesh;
 	}
 	
 	public void AddTriangle (Vector3 v1, Vector3 v2, Vector3 v3) {

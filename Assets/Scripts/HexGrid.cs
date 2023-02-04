@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -16,6 +15,8 @@ public class HexGrid : MonoBehaviour
 
 	public HexCell[] cells;
 	public HexGridChunk[] chunks;
+
+	public BoxCollider boxCollider;
 	
 	[Range(0f, 20f)]
 	public float strength = 10f;
@@ -69,12 +70,16 @@ public class HexGrid : MonoBehaviour
 		
 		AddBigHiddenBlock(50, 50);
 
-		AddBigHiddenBlock(50, 59);
+		// AddBigHiddenBlock(50, 59);
 
-		AddBigHiddenBlock(50, 40);
+		// AddBigHiddenBlock(50, 40);
 
-		AddHiddenBlock(40, 40);
-		AddHiddenBlock(40, 59);
+		// AddHiddenBlock(40, 40);
+		// AddHiddenBlock(40, 59);
+		
+		boxCollider = gameObject.AddComponent<BoxCollider>();
+		boxCollider.size = new Vector3(chunkCountX * HexMetrics.ChunkSizeX * 1.35f,10f,chunkCountZ * HexMetrics.ChunkSizeZ * 1.14f);
+		boxCollider.center = -position - new Vector3(0, 5, 0);
 
 		CreateChunks();
 		CreateCells();
