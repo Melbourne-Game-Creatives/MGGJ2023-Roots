@@ -47,4 +47,4 @@ MonoBehaviour:
   Map: {fileID: 0}
   MainRootPrefab: {fileID: 5941014639113108421, guid: f9d28519bc1336a45b6d87cb3c84fa9d,
     type: 3}
-  timeBetweenSpawns: 15
+  timeBetweenSpawns: 30

@@ -149,7 +149,7 @@ MonoBehaviour:
   modelTr: {fileID: 2456594816846673373}
   initialHealth: 10
   healthRate: 0.05
-  growthDelay: 3
+  growthDelay: 5
   maxAngle: 45
   targetingThreshold: 12
   directThreshold: 3
