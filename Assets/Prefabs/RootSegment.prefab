@@ -104,9 +104,10 @@ GameObject:
   - component: {fileID: 5941014638751028767}
   - component: {fileID: 5941014638751028738}
   - component: {fileID: 5941014638751028765}
+  - component: {fileID: 2368859938893331203}
   m_Layer: 0
   m_Name: Model
-  m_TagString: Untagged
+  m_TagString: Root
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -176,6 +177,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &2368859938893331203
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5941014638751028766}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2.2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5941014639113108421
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,10 +201,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5941014639113108426}
   - component: {fileID: 5941014639113108427}
-  - component: {fileID: 2827474931646629798}
   m_Layer: 0
   m_Name: RootSegment
-  m_TagString: Root
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -237,17 +251,3 @@ MonoBehaviour:
   maxAngle: 45
   targetingThreshold: 30
   directThreshold: 3
---- !u!136 &2827474931646629798
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5941014639113108421}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.175
-  m_Height: 3
-  m_Direction: 2
-  m_Center: {x: 0, y: 0.175, z: 1.4}

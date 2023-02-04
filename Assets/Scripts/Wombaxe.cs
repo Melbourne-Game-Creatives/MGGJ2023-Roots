@@ -68,7 +68,7 @@ public class Wombaxe : MonoBehaviour, ISelectable
     {
         if (collision.gameObject.CompareTag("Root"))
         {
-            AttackRoot(collision.gameObject.GetComponent<RootSegment>());
+            AttackRoot(collision.gameObject.GetComponentInParent<RootSegment>());
         }
     }
 }
