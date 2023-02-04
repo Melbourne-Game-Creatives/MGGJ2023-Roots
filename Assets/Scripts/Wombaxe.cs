@@ -28,6 +28,8 @@ public class Wombaxe : MonoBehaviour, ISelectable
         UnitSelections.Instance.unitList.Add(this);
 
         TargetPos = transform.position;
+
+        GetComponent<Rigidbody>().sleepThreshold = 0.0f;
     }
 
     private void Update()
