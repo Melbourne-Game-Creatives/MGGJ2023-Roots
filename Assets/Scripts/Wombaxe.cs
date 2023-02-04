@@ -5,8 +5,11 @@ public class Wombaxe : MonoBehaviour, ISelectable
     [SerializeField] private GameObject selectionQuad;
 
     [SerializeField] private float speed;
+    [SerializeField] private float attackDamage;
+    [SerializeField] private float attackCooldown;
 
     public Vector3 TargetPos;
+    private float currentCooldown;
 
     private void Start()
     {
@@ -46,5 +49,26 @@ public class Wombaxe : MonoBehaviour, ISelectable
     public void SetTargetPosition(Vector3 pos)
     {
         TargetPos = pos;
+    }
+
+    private void AttackRoot(RootSegment root)
+    {
+        if (currentCooldown > 0)
+        {
+            currentCooldown -= Time.deltaTime;
+        }
+        else
+        {
+            root.TakeDamage(attackDamage);
+            currentCooldown = attackCooldown;
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Root"))
+        {
+            AttackRoot(collision.gameObject.GetComponent<RootSegment>());
+        }
     }
 }

@@ -232,6 +232,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectionQuad: {fileID: 1931671252688575567}
   speed: 5
+  attackDamage: 10
+  attackCooldown: 1
   TargetPos: {x: 0, y: 0, z: 0}
 --- !u!65 &2431479711987103792
 BoxCollider:
