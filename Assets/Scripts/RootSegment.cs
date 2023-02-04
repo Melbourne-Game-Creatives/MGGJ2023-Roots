@@ -39,12 +39,11 @@ public class RootSegment : MonoBehaviour
 
     private void Awake()
     {
-        hasGrown = false;
         target = Vector3.zero;
-        timeToGrow = growthDelay;
         modelInitialScale = modelTr.localScale;
         health = initialHealth;
 
+        Reactivate();
         CheckHovelReached();
     }
 
@@ -89,7 +88,7 @@ public class RootSegment : MonoBehaviour
 
     public void Reactivate()
     {
-        timeToGrow = growthDelay;
+        timeToGrow = growthDelay + Random.Range(-2.5f, 2.5f);
         hasGrown = false;
     }
 
