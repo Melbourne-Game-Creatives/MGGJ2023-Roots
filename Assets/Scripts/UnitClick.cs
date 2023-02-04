@@ -12,7 +12,7 @@ public class UnitClick : MonoBehaviour
         myCam = Camera.main;
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -23,11 +23,11 @@ public class UnitClick : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.LeftControl))
                 {
-                    UnitSelections.Instance.ShiftClickSelect(hit.collider.gameObject);
+                    UnitSelections.Instance.ShiftClickSelect(hit.collider.gameObject.GetComponentInChildren<ISelectable>());
                 }
                 else
                 {
-                    UnitSelections.Instance.ClickSelect(hit.collider.gameObject);
+                    UnitSelections.Instance.ClickSelect(hit.collider.gameObject.GetComponentInChildren<ISelectable>());
                 }
             }
             else
@@ -37,7 +37,19 @@ public class UnitClick : MonoBehaviour
                     UnitSelections.Instance.DeselectAll();
                 }
             }
-        }
+        } 
+        else if (Input.GetMouseButtonDown(1))
+        {
+            RaycastHit hit;
+            Ray ray = myCam.ScreenPointToRay(Input.mousePosition);
 
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, ground))
+            {
+                foreach (ISelectable unit in UnitSelections.Instance.unitsSelected)
+                {
+                    unit.SetTargetPosition(hit.point);
+                } 
+            }
+        }
     }
 }

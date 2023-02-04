@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class UnitSelections : MonoBehaviour
 {
-    public List<GameObject> unitList = new List<GameObject>();
-    public List<GameObject> unitsSelected = new List<GameObject>();
+    public List<ISelectable> unitList = new List<ISelectable>();
+    public List<ISelectable> unitsSelected = new List<ISelectable>();
 
     private static UnitSelections _instance;
     public static UnitSelections Instance { get { return _instance; } }
@@ -21,36 +21,44 @@ public class UnitSelections : MonoBehaviour
         }
     }
 
-    public void ClickSelect(GameObject unitToAdd)
+    public void ClickSelect(ISelectable unitToAdd)
     {
         DeselectAll();
         unitsSelected.Add(unitToAdd);
+        unitToAdd.ShowSelection();
     }
 
-    public void ShiftClickSelect(GameObject unitToAdd)
+    public void ShiftClickSelect(ISelectable unitToAdd)
     {
         if (!unitsSelected.Contains(unitToAdd))
         {
             unitsSelected.Add(unitToAdd);
+            unitToAdd.ShowSelection();
         }
         else
         {
             unitsSelected.Remove(unitToAdd);
+            unitToAdd.HideSelection();
         }
     }
 
-    public void DragSelect(GameObject unitToAdd)
+    public void DragSelect(ISelectable unitToAdd)
     {
 
     }
 
-    public void Deselect(GameObject unitToRemove)
+    public void Deselect(ISelectable unitToRemove)
     {
         unitsSelected.Remove(unitToRemove);
+        unitToRemove.HideSelection();
     }
 
     public void DeselectAll()
     {
+        foreach (ISelectable unit in unitsSelected)
+        {
+            unit.HideSelection();
+        }
         unitsSelected.Clear();
     }
 }
