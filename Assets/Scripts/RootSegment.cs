@@ -5,7 +5,7 @@ public class RootSegment : MonoBehaviour
 {
     [SerializeField] private Transform growthPointTr;
     [SerializeField] private Transform[] branchPointTrs;
-    [SerializeField] private PrefabCatalog prefabCatalog;
+    [SerializeField] private PrefabCatalog rootPrefabs;
     [SerializeField] private Transform modelTr;
 
     [Space]
@@ -124,7 +124,7 @@ public class RootSegment : MonoBehaviour
             effectiveRotation = Quaternion.Euler(0, Random.Range(-maxAngle, maxAngle) * deviationFactor, 0) * desiredRotation;
         }
 
-        GameObject newSegmentGO = Instantiate(prefabCatalog.getRandom(), growthPointTr.position, effectiveRotation, growthPointTr);
+        GameObject newSegmentGO = Instantiate(rootPrefabs.getRandom(), growthPointTr.position, effectiveRotation, growthPointTr);
         newSegmentGO.GetComponent<RootSegment>().init(generation);
     }
 
@@ -135,7 +135,7 @@ public class RootSegment : MonoBehaviour
         {
             if (ShouldBranch() && IsInMap(branchPointTr))
             {
-                GameObject newSegmentGO = Instantiate(prefabCatalog.getRandom(), branchPointTr.position, branchPointTr.rotation, branchPointTr);
+                GameObject newSegmentGO = Instantiate(rootPrefabs.getRandom(), branchPointTr.position, branchPointTr.rotation, branchPointTr);
                 newSegmentGO.GetComponent<RootSegment>().init(generation + 1);
             }
         }
