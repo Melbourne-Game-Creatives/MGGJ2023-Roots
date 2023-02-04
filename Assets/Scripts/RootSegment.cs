@@ -169,12 +169,11 @@ public class RootSegment : MonoBehaviour
 
 
     private void UpdateHealth()
-    {
+    {        
         health += healthRate * Time.deltaTime;
-        float factor = health / initialHealth;
-        if (factor > 1) {
-            factor += (health - initialHealth); // visually grow faster, when bigger than initialHealth
-        }
+     
+        if (health < initialHealth) return; // we only show them bigger, never smaller than initially
+        float factor = health / initialHealth + (health - initialHealth);
         modelTr.localScale = new Vector3(modelInitialScale.x * factor, modelInitialScale.y, modelInitialScale.z * factor);
     }
 
