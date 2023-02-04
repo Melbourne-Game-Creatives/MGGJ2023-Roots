@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Wombaxe : MonoBehaviour, ISelectable
@@ -26,6 +27,8 @@ public class Wombaxe : MonoBehaviour, ISelectable
     private bool takeDamageThisFrame;
     private bool healThisFrame;
     private bool isMovingTowardsTarget;
+
+    private IEnumerator axeStopCoroutine;
 
 
     private void Start()
@@ -108,6 +111,7 @@ public class Wombaxe : MonoBehaviour, ISelectable
 
     private void AttackRoot(RootSegment root)
     {
+        StopCoroutine("StopAxe");
         animator.SetBool("Cutting", true);
         if (currentCooldown > 0)
         {
@@ -136,6 +140,12 @@ public class Wombaxe : MonoBehaviour, ISelectable
 
     private void OnCollisionExit(Collision other)
     {
+        StartCoroutine("StopAxe");
+    }
+
+    private IEnumerator StopAxe()
+    {
+        yield return new WaitForSeconds(0.25f);
         animator.SetBool("Cutting", false);
     }
 
