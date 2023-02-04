@@ -535,6 +535,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wombat
       objectReference: {fileID: 0}
+    - target: {fileID: 2997654988646722540, guid: 0bb8aa389db580542aa646a6cec38e3e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 754973a34e7c8d0498952ef4d1753e66, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bb8aa389db580542aa646a6cec38e3e, type: 3}
 --- !u!1 &7231964332371413427 stripped
