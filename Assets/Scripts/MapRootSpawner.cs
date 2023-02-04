@@ -18,6 +18,7 @@ public class MapRootSpawner : MonoBehaviour
     {
         var hexCenter = Map.transform.position + HexMetrics.GetCenter(x, z);
 
-        Instantiate(RootPrefab, hexCenter, Quaternion.identity);
+        GameObject newGO = Instantiate(RootPrefab, hexCenter, Quaternion.identity);
+        newGO.transform.LookAt(Vector3.zero);
     }
 }

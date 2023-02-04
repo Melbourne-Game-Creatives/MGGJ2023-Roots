@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Map: {fileID: 0}
-  RootPrefab: {fileID: 898780450029993686, guid: 2bece3d50c0cfd74d8144f23c09b19e8,
+  RootPrefab: {fileID: 5941014639113108421, guid: e18536f8ea2baf64182b47ac5f4b6ea8,
     type: 3}
