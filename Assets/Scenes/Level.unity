@@ -725,6 +725,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f305cd2bc4627e54f866bb0dd9e96d12, type: 3}
   - {fileID: 8300000, guid: 1ddf10cf8624bb845bebd72b49b55c52, type: 3}
   - {fileID: 8300000, guid: c245d9a9b207c004a9a18a442f01e4a2, type: 3}
+  - {fileID: 8300000, guid: 6058c9b02b32a454fa1117f4a6746861, type: 3}
+  - {fileID: 8300000, guid: 42c10f4b21658f64cbb68ca8dd01d8bc, type: 3}
+  - {fileID: 8300000, guid: e85adaddef220f541a0dbc05769fc039, type: 3}
+  - {fileID: 8300000, guid: 734853614b3916946ad26b9e58d2065c, type: 3}
+  - {fileID: 8300000, guid: 55f51fe42deebfd4f9d15bb385e98981, type: 3}
+  - {fileID: 8300000, guid: 7b5243b68b7d40f46ac5e459599715e2, type: 3}
+  - {fileID: 8300000, guid: a5cc16488978b9c40b9fb3f041177f77, type: 3}
   audioSource: {fileID: 981272271}
 --- !u!4 &1110919515
 Transform:
