@@ -59,6 +59,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ec0a32522b8c4041a15358f5aa7908b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loseScreen: {fileID: 0}
+  gameplayCanvas: {fileID: 0}
+  wombatSpawner: {fileID: 0}
+  frenzyCooldown: 10
+  growthCooldown: 10
 --- !u!1001 &1999332401459220084
 PrefabInstance:
   m_ObjectHideFlags: 0

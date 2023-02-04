@@ -281,6 +281,7 @@ GameObject:
   - component: {fileID: 3401862491192269501}
   - component: {fileID: 3401862491192269502}
   - component: {fileID: 3401862491192269503}
+  - component: {fileID: 1946511670407009558}
   m_Layer: 5
   m_Name: GameplayCanvas
   m_TagString: Untagged
@@ -371,6 +372,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1946511670407009558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3401862491192269496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f77fb844169ada940acd0aa2644308ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frenzyButton: {fileID: 3401862489721291429}
+  growthButton: {fileID: 6758813125856752492}
 --- !u!1 &7728960467573481202
 GameObject:
   m_ObjectHideFlags: 0

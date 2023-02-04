@@ -881,6 +881,18 @@ Canvas:
     type: 3}
   m_PrefabInstance: {fileID: 3401862489614450827}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1712298551 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1946511670407009558, guid: ed7b86752f3216c4fb7be42029c93eb8,
+    type: 3}
+  m_PrefabInstance: {fileID: 3401862489614450827}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f77fb844169ada940acd0aa2644308ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1724112356
 GameObject:
   m_ObjectHideFlags: 0
@@ -1795,6 +1807,11 @@ PrefabInstance:
       propertyPath: wombatSpawner
       value: 
       objectReference: {fileID: 1263515952}
+    - target: {fileID: 5313455449132006184, guid: 0fc11405107d06e44a6eb6a68da021c3,
+        type: 3}
+      propertyPath: gameplayCanvas
+      value: 
+      objectReference: {fileID: 1712298551}
     - target: {fileID: 5313455449132006184, guid: 0fc11405107d06e44a6eb6a68da021c3,
         type: 3}
       propertyPath: gameplayScreen
