@@ -14,9 +14,11 @@ public class Wombaxe : MonoBehaviour, ISelectable
     [Header("Health")]
     [SerializeField] private float initialHealth;
     [SerializeField] private float damageFromBranchPerSecond;
+    [SerializeField] private float healingFromBurrow;
     [SerializeField] private HealthBar healthBar;
     private float health;
     private bool takeDamageThisFrame;
+    private bool healThisFrame;
     private bool isMovingTowardsTarget;
 
 
@@ -44,7 +46,16 @@ public class Wombaxe : MonoBehaviour, ISelectable
 
     private void LateUpdate()
     {
-        if (takeDamageThisFrame)
+        if (healThisFrame)
+        {
+            if (health < initialHealth)
+            {
+                SetHealth(Mathf.Min(initialHealth, health + healingFromBurrow * Time.deltaTime));
+            }
+            takeDamageThisFrame = false;
+            
+        }
+        else if (takeDamageThisFrame)
         {
             TakeDamage(damageFromBranchPerSecond);
             takeDamageThisFrame = false;
@@ -106,6 +117,19 @@ public class Wombaxe : MonoBehaviour, ISelectable
             SetTargetPosition(other.transform.position);
         }
     }
+
+
+    public void StartHealing()
+    {
+        healThisFrame = true;
+    }
+
+
+    public void StopHealing()
+    {
+        healThisFrame = false;
+    }
+
 
     private void TakeDamage(float damage)
     {

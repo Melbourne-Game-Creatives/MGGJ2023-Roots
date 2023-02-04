@@ -239,6 +239,7 @@ MonoBehaviour:
   TargetPos: {x: 0, y: 0, z: 0}
   initialHealth: 30
   damageFromBranchPerSecond: 1
+  healingFromBurrow: 2
   healthBar: {fileID: 6413069409535516253}
 --- !u!65 &2431479711987103792
 BoxCollider:

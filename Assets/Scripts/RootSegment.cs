@@ -190,7 +190,7 @@ public class RootSegment : MonoBehaviour
             segment.ModelTr.DOScale(new Vector3(0, segment.modelTr.localScale.y, 0), fadeOutTime);
         }
         ReactivateParent();
-        Destroy(gameObject, fadeOutTime + 1f);
+        Destroy(gameObject, fadeOutTime + 3f);
     }
 
 
