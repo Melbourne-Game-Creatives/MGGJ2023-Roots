@@ -11,8 +11,17 @@ public class Wombaxe : MonoBehaviour, ISelectable
     public Vector3 TargetPos;
     private float currentCooldown;
 
+    [Header("Health")]
+    [SerializeField] private float initialHealth;
+    [SerializeField] private float damageFromBranchPerSecond;
+    [SerializeField] private HealthBar healthBar;
+    private float health;
+    private bool takeDamageThisFrame;
+
+
     private void Start()
     {
+        health = initialHealth;
         UnitSelections.Instance.unitList.Add(this);
 
         TargetPos = transform.position;
@@ -28,6 +37,15 @@ public class Wombaxe : MonoBehaviour, ISelectable
         {
             float step = speed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, TargetPos, step);
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (takeDamageThisFrame)
+        {
+            TakeDamage(damageFromBranchPerSecond);
+            takeDamageThisFrame = false;
         }
     }
 
@@ -74,6 +92,31 @@ public class Wombaxe : MonoBehaviour, ISelectable
         if (collision.gameObject.CompareTag("Root"))
         {
             AttackRoot(collision.gameObject.GetComponentInParent<RootSegment>());
+            takeDamageThisFrame = true;
         }
+    }
+
+
+    private void TakeDamage(float damage)
+    {
+        SetHealth(health - damage * Time.deltaTime);
+        if (health == 0)
+        {
+            Die();
+        }
+    }
+
+
+    private void SetHealth(float _health)
+    {
+        health = Mathf.Max(_health, 0);
+        healthBar.UpdateBar(health / initialHealth);
+    }
+
+
+    private void Die()
+    {
+        print("Wombat dead!");
+        Destroy(gameObject, 0.4f);
     }
 }
