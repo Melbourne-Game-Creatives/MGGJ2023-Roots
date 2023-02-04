@@ -115,7 +115,7 @@ public class HexGrid : MonoBehaviour
 			{
 				if (hiddenCells.Contains((x, z))) continue;
 				
-				var patch = Noise.Sum(noiseMethod, new Vector3(x, z, 0), frequency, octaves, lacunarity, persistence);
+				var patch = Noise.Sum(noiseMethod, new Vector3(x + 30, z - 5, 0), frequency, octaves, lacunarity, persistence);
 				var patch2 = Noise.Sum(noiseMethod, new Vector3(x, z, 0), 2f, 8, 2f,0.1f).value / 4 + 1.5f;
 				CreateCell(x, z, patch.value * strength, patch2);
 			}
