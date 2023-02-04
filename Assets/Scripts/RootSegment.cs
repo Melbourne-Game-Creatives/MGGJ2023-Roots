@@ -9,7 +9,7 @@ public class RootSegment : MonoBehaviour
 
     [Space]
 
-    [SerializeField] private float health;
+    [SerializeField] private float initialHealth;
     [SerializeField][Tooltip("Health points per second")] private float healthRate;
 
     [Space]
@@ -24,6 +24,8 @@ public class RootSegment : MonoBehaviour
     private float distanceToTarget;
     private float timeToGrow;
     private int generation = 1; // to be changed by parent
+    private Vector3 modelInitialScale;
+    private float health;
 
 
     public void init(int _generation)
@@ -37,6 +39,8 @@ public class RootSegment : MonoBehaviour
         hasGrown = false;
         target = Vector3.zero;
         timeToGrow = growthDelay;
+        modelInitialScale = modelTr.localScale;
+        health = initialHealth;
 
         CheckHovelReached();
     }
@@ -167,8 +171,11 @@ public class RootSegment : MonoBehaviour
     private void UpdateHealth()
     {
         health += healthRate * Time.deltaTime;
-        // TODO: for now, make it a bit thicker (could be animated)
-        modelTr.localScale = modelTr.localScale + new Vector3(0.1f, 0, 0.1f) * Time.deltaTime;
+        float factor = health / initialHealth;
+        if (factor > 1) {
+            factor += (health - initialHealth); // visually grow faster, when bigger than initialHealth
+        }
+        modelTr.localScale = new Vector3(modelInitialScale.x * factor, modelInitialScale.y, modelInitialScale.z * factor);
     }
 
 

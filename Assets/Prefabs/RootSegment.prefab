@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 905687307720473228}
   m_LocalRotation: {x: -0, y: 0.46573493, z: -0, w: 0.88492423}
-  m_LocalPosition: {x: 0, y: 0, z: 1.43}
+  m_LocalPosition: {x: 0, y: 0, z: 0.779}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5941014638231751288}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5.39}
+  m_LocalPosition: {x: 0, y: 0, z: 2.751}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -86,7 +86,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5941014638721635694}
   m_LocalRotation: {x: 0, y: -0.46573806, z: 0, w: 0.8849226}
-  m_LocalPosition: {x: 0, y: 0, z: 3.68}
+  m_LocalPosition: {x: 0, y: 0, z: 1.945}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -119,8 +119,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5941014638751028766}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.35, z: 2.8}
-  m_LocalScale: {x: 0.7, y: 2.8, z: 0.7}
+  m_LocalPosition: {x: 0, y: 0.175, z: 1.4}
+  m_LocalScale: {x: 0.35, y: 1.4, z: 0.35}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5941014639113108426}
@@ -230,14 +230,13 @@ MonoBehaviour:
   - {fileID: 5941014638721635695}
   - {fileID: 5794812429108720157}
   prefabCatalog: {fileID: 11400000, guid: 06b1baeed31d4dc4f968eb10d690a356, type: 2}
-  mapHalfSize: 50
   modelTr: {fileID: 5941014638751028767}
-  health: 10
-  healthRate: 0.1
+  initialHealth: 10
+  healthRate: 0.05
   growthDelay: 2
   maxAngle: 45
-  targetingThreshold: 50
-  directThreshold: 5
+  targetingThreshold: 30
+  directThreshold: 3
 --- !u!136 &2827474931646629798
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -248,7 +247,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.3441605
-  m_Height: 5.9370117
+  m_Radius: 0.175
+  m_Height: 3
   m_Direction: 2
-  m_Center: {x: 0.00000047683716, y: 0.35044456, z: 2.8}
+  m_Center: {x: 0, y: 0.175, z: 1.4}
