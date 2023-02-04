@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Wombaxe : MonoBehaviour, ISelectable
@@ -8,8 +9,13 @@ public class Wombaxe : MonoBehaviour, ISelectable
     [SerializeField] private float attackDamage;
     [SerializeField] private float attackCooldown;
 
+    public Animator animator;
+    private Rigidbody rb;
+
     public Vector3 TargetPos;
     private float currentCooldown;
+
+    private Vector3 lastPosCheck;
 
     [Header("Health")]
     [SerializeField] private float initialHealth;
@@ -24,16 +30,28 @@ public class Wombaxe : MonoBehaviour, ISelectable
 
     private void Start()
     {
+        lastPosCheck = transform.position;
+        rb = GetComponent<Rigidbody>();
         health = initialHealth;
         UnitSelections.Instance.unitList.Add(this);
 
         TargetPos = transform.position;
 
-        GetComponent<Rigidbody>().sleepThreshold = 0.0f;
+        rb.sleepThreshold = 0.0f;
     }
 
     private void Update()
     {
+        if (animator)
+        {
+            var delta = transform.position - lastPosCheck;
+            lastPosCheck = transform.position;
+            if (animator.GetBool("Moving") != delta.magnitude > 0.0001f)
+            {
+                animator.SetBool("Moving", delta.magnitude > 0.0001f);
+            }
+        }
+        
         if (Vector3.Distance(this.transform.position, TargetPos) <= 0.2f)
         {
             isMovingTowardsTarget = false;
@@ -82,6 +100,7 @@ public class Wombaxe : MonoBehaviour, ISelectable
     public void SetTargetPosition(Vector3 pos)
     {
         TargetPos = pos;
+        transform.LookAt(TargetPos);
         isMovingTowardsTarget = true;
     }
 
