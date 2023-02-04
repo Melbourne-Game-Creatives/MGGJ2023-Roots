@@ -20,7 +20,8 @@ public class DevClick : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.collider.TryGetComponent(out RootSegment segment))
+
+                if (hit.collider.transform.parent != null && hit.collider.transform.parent.TryGetComponent(out RootSegment segment))
                 {
                     segment.TakeDamage(10f);
                 }
