@@ -30,6 +30,7 @@ public class Wombaxe : MonoBehaviour, ISelectable
 
     private IEnumerator axeStopCoroutine;
 
+    public ParticleSystem Particle;
 
     private void Start()
     {
@@ -119,6 +120,7 @@ public class Wombaxe : MonoBehaviour, ISelectable
         }
         else
         {
+            Particle.Play();
             root.TakeDamage(attackDamage);
             currentCooldown = attackCooldown;
         }
