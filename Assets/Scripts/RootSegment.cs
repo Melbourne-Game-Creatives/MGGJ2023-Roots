@@ -157,6 +157,13 @@ public class RootSegment : MonoBehaviour
     }
 
 
+    public void Reactivate()
+    {
+        timeToGrow = growthDelay;
+        hasGrown = false;
+    }
+
+
     private void Die()
     {
         RootSegment[] segments = GetComponentsInChildren<RootSegment>();
@@ -165,7 +172,17 @@ public class RootSegment : MonoBehaviour
             segment.enabled = false;
             segment.gameObject.transform.localScale = Vector3.one * 0.5f;
         }
-        // TODO: reactivate parent
+        ReactivateParent();
+    }
+
+
+    private void ReactivateParent()
+    {
+        RootSegment parentSegment = transform.parent.GetComponentInParent<RootSegment>();
+        if (parentSegment != null)
+        {
+            parentSegment.Reactivate();
+        }
     }
 
 
