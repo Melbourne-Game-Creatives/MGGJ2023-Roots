@@ -34,6 +34,7 @@ public class RootSegment : MonoBehaviour
     public void init(int _generation)
     {
         generation = _generation;
+        AnimateGrowth();
     }
 
 
@@ -94,7 +95,7 @@ public class RootSegment : MonoBehaviour
 
     public void Reactivate()
     {
-        timeToGrow = growthDelay + Random.Range(-2.5f, 2.5f);
+        timeToGrow = growthDelay + Random.Range(-0.5f, 0.5f);
         hasGrown = false;
     }
 
@@ -220,5 +221,12 @@ public class RootSegment : MonoBehaviour
             print("YOU'RE HOMELESS!");
             FindObjectOfType<Burrow>().ShowEndScreen();
         }
+    }
+
+
+    private void AnimateGrowth()
+    {
+        transform.localScale = Vector3.zero;
+        transform.DOScale(Vector3.one, 3f);
     }
 }
