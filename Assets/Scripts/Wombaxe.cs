@@ -17,8 +17,15 @@ public class Wombaxe : MonoBehaviour, ISelectable
 
     private void Update()
     {
-        float step = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, TargetPos, step);
+        if (Vector3.Distance(this.transform.position, TargetPos) <= 0.2f)
+        {
+            return;
+        }
+        else
+        {
+            float step = speed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, TargetPos, step);
+        }
     }
 
     private void OnDestroy()
@@ -38,6 +45,6 @@ public class Wombaxe : MonoBehaviour, ISelectable
 
     public void SetTargetPosition(Vector3 pos)
     {
-        TargetPos = pos + new Vector3(0, this.GetComponent<BoxCollider>().size.y * 0.5f, 0);
+        TargetPos = pos;
     }
 }
