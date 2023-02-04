@@ -5,7 +5,6 @@ public class MapRootSpawner : MonoBehaviour
     public HexGrid Map;
     public GameObject MainRootPrefab;
 
-    [SerializeField] private PrefabCatalog rootPrefabs;
     [SerializeField] float timeBetweenSpawns;
     float timeToNextSpawn;
 
@@ -19,10 +18,10 @@ public class MapRootSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnAt(0,0, MainRootPrefab);
-        SpawnAt(Map.chunkCountX * HexMetrics.ChunkSizeX - 1,0, MainRootPrefab);
-        SpawnAt(0,Map.chunkCountZ * HexMetrics.ChunkSizeZ - 1, MainRootPrefab);
-        SpawnAt(Map.chunkCountX * HexMetrics.ChunkSizeX - 1,Map.chunkCountZ * HexMetrics.ChunkSizeZ - 1, MainRootPrefab);
+        SpawnAt(0,0);
+        SpawnAt(Map.chunkCountX * HexMetrics.ChunkSizeX - 1,0);
+        SpawnAt(0,Map.chunkCountZ * HexMetrics.ChunkSizeZ - 1);
+        SpawnAt(Map.chunkCountX * HexMetrics.ChunkSizeX - 1,Map.chunkCountZ * HexMetrics.ChunkSizeZ - 1);
     }
 
 
@@ -40,12 +39,13 @@ public class MapRootSpawner : MonoBehaviour
     }
 
 
-    void SpawnAt(int x, int z, GameObject prefab)
+    void SpawnAt(int x, int z)
     {
         var hexCenter = Map.transform.position + HexMetrics.GetCenter(x, z);
 
-        GameObject newGO = Instantiate(prefab, hexCenter, Quaternion.identity);
+        GameObject newGO = Instantiate(MainRootPrefab, hexCenter, Quaternion.identity);
         newGO.transform.LookAt(Vector3.zero);
+        newGO.GetComponent<RootSegment>().SetHealth(100f);
     }
 
 
@@ -57,7 +57,8 @@ public class MapRootSpawner : MonoBehaviour
         if (Random.Range(0, 1f) > 0.5f) randomX *= -1;
         if (Random.Range(0, 1f) > 0.5f) randomZ *= -1;
 
-        GameObject newGO = Instantiate(rootPrefabs.getRandom(), new Vector3(randomX, 0, randomZ), Quaternion.identity);
+        GameObject newGO = Instantiate(MainRootPrefab, new Vector3(randomX, 0, randomZ), Quaternion.identity);
         newGO.transform.LookAt(Vector3.zero);
+        newGO.GetComponent<RootSegment>().SetHealth(100f);
     }
 }

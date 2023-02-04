@@ -68,6 +68,12 @@ public class RootSegment : MonoBehaviour
     }
 
 
+    public void SetHealth(float _health)
+    {
+        health = _health;
+    }
+    
+    
     public bool IsInMap(Transform tr)
     {
         return Physics.Raycast(growthPointTr.position + Vector3.up, Vector3.down, 100f, 1 << LayerMask.NameToLayer("Ground"));

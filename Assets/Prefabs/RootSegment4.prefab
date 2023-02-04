@@ -151,7 +151,7 @@ MonoBehaviour:
   healthRate: 0.05
   growthDelay: 3
   maxAngle: 45
-  targetingThreshold: 30
+  targetingThreshold: 12
   directThreshold: 3
 --- !u!1001 &2710369301894484534
 PrefabInstance:

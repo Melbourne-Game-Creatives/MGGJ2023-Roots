@@ -189,6 +189,7 @@ public class Wombaxe : MonoBehaviour, ISelectable
 
     private void Die()
     {
+        UnitSelections.Instance.unitsSelected.Remove(this);
         print("Wombat dead!");
         Destroy(gameObject, 0.4f);
     }

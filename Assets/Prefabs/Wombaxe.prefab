@@ -150,13 +150,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectionQuad: {fileID: 1931671252688575567}
   speed: 7
-  attackDamage: 150
+  attackDamage: 10
   attackCooldown: 1
   animator: {fileID: 3789643704967452670}
   TargetPos: {x: 0, y: 0, z: 0}
   initialHealth: 30
-  damageFromBranchPerSecond: 1
-  healingFromBurrow: 2
+  damageFromBranchPerSecond: 2
+  healingFromBurrow: 4
   healthBar: {fileID: 6413069409535516253}
 --- !u!65 &2431479711987103792
 BoxCollider:
