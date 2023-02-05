@@ -25,15 +25,10 @@ public class Burrow : MonoBehaviour
         currentFrenzyCooldown -= Time.deltaTime;
         currentGrowthCooldown -= Time.deltaTime;
 
-        if (currentFrenzyCooldown <= 0)
-        {
-            gameplayCanvas.EnableFrenzyButton();
-        }
+        if (currentFrenzyCooldown < 0) currentFrenzyCooldown = 0;
+        if (currentGrowthCooldown < 0) currentGrowthCooldown = 0;
 
-        if (currentGrowthCooldown <= 0)
-        {
-            gameplayCanvas.EnableGrowthButton();
-        }
+        gameplayCanvas.UpdateUI(currentFrenzyCooldown, frenzyCooldown, currentGrowthCooldown, growthCooldown);
     }
 
     private void OnTriggerEnter(Collider other)
