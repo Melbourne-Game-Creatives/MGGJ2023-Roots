@@ -62,8 +62,8 @@ MonoBehaviour:
   loseScreen: {fileID: 0}
   gameplayCanvas: {fileID: 0}
   wombatSpawner: {fileID: 0}
-  frenzyCooldown: 10
-  growthCooldown: 10
+  frenzyCooldown: 150
+  growthCooldown: 60
 --- !u!1001 &1999332401459220084
 PrefabInstance:
   m_ObjectHideFlags: 0

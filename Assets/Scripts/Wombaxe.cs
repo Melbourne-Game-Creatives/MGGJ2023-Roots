@@ -218,9 +218,9 @@ public class Wombaxe : MonoBehaviour, ISelectable
 
     public void Grow()
     {
-        speed *= 1.5f;
-        attackDamage *= 1.5f;
-        attackCooldown *= 0.5f;
-        this.transform.localScale *= 1.5f;
+        speed *= 1.25f;
+        attackDamage *= 1.25f;
+        attackCooldown *= 0.75f;
+        this.transform.localScale *= 1.38f;
     }
 }
