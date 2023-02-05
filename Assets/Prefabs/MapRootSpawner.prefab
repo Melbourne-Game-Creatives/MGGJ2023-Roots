@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60c725a4c5173f641a19eab4725197b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Map: {fileID: 0}
   MainRootPrefab: {fileID: 5941014639113108421, guid: f9d28519bc1336a45b6d87cb3c84fa9d,
     type: 3}
-  timeBetweenSpawns: 30
+  timeBetweenSpawns: 5

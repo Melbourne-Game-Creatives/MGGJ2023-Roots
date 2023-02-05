@@ -153,9 +153,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2f64c259cc1543947a4a27442d566405, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.899
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -602,6 +602,16 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 55f51fe42deebfd4f9d15bb385e98981, type: 3}
   - {fileID: 8300000, guid: 7b5243b68b7d40f46ac5e459599715e2, type: 3}
   - {fileID: 8300000, guid: a5cc16488978b9c40b9fb3f041177f77, type: 3}
+  DeathSounds:
+  - {fileID: 8300000, guid: baa209c3bb57bf647b9c823804d14177, type: 3}
+  - {fileID: 8300000, guid: 7ee63d82de8ecda4289e712de0041451, type: 3}
+  - {fileID: 8300000, guid: cf841fb9735231c449278701955e1396, type: 3}
+  - {fileID: 8300000, guid: 3ae90e943012df449867aded2a9ca2fa, type: 3}
+  - {fileID: 8300000, guid: 8236dd6e7281aab419e4249062917777, type: 3}
+  - {fileID: 8300000, guid: 6f8571feff4b89445997229cf44ae1e8, type: 3}
+  - {fileID: 8300000, guid: 9edb4b54674f4c14ebbf42efa7398852, type: 3}
+  - {fileID: 8300000, guid: e65ad4b90fcd98c408f723f2cbca8d7e, type: 3}
+  - {fileID: 8300000, guid: 80f242c564c0b9d41b7a09d590646ab5, type: 3}
   audioSource: {fileID: 981272271}
 --- !u!4 &1110919515
 Transform:
@@ -1107,6 +1117,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wombaxe
+      objectReference: {fileID: 0}
+    - target: {fileID: 2468075592044444157, guid: 55532b2658f64a745aee3018742350f2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2957612612313850695, guid: 55532b2658f64a745aee3018742350f2,
         type: 3}
@@ -1867,11 +1882,6 @@ PrefabInstance:
       propertyPath: Map
       value: 
       objectReference: {fileID: 1724112357}
-    - target: {fileID: 5313935842100151852, guid: c5bcbd080a810384c913e744afcf3b5c,
-        type: 3}
-      propertyPath: timeBetweenSpawns
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 5313935842100151853, guid: c5bcbd080a810384c913e744afcf3b5c,
         type: 3}
       propertyPath: m_Name
