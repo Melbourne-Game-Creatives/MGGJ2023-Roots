@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainRootPrefab: {fileID: 5941014639113108421, guid: f9d28519bc1336a45b6d87cb3c84fa9d,
     type: 3}
-  timeBetweenSpawns: 7
+  timeBetweenSpawns: 6
