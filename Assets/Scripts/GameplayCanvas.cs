@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -8,6 +9,19 @@ public class GameplayCanvas : MonoBehaviour
     [SerializeField] private Button growthButton;
     [SerializeField] private Image frenzyBar;
     [SerializeField] private Image growthBar;
+    
+    private bool helpOn = true;
+    public GameObject KeyHelp;
+
+    public void Update()
+    {
+        if (!helpOn || !DirectionPressed()) return;
+        if (KeyHelp)
+        {
+            Destroy(KeyHelp);
+        }
+        helpOn = false;
+    }
 
     public void EnableFrenzyButton()
     {
@@ -55,5 +69,10 @@ public class GameplayCanvas : MonoBehaviour
         {
             EnableGrowthButton();
         }
+    }
+    
+    private bool DirectionPressed()
+    {
+        return Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D);
     }
 }
