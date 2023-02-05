@@ -23,6 +23,9 @@ public class Wombaxe : MonoBehaviour, ISelectable
     [SerializeField] private float damageFromBranchPerSecond;
     [SerializeField] private float healingFromBurrow;
     [SerializeField] private HealthBar healthBar;
+
+    [SerializeField] private AudioClip chopSound;
+
     private float health;
     private bool takeDamageThisFrame;
     private bool healThisFrame;
@@ -120,6 +123,7 @@ public class Wombaxe : MonoBehaviour, ISelectable
         }
         else
         {
+            AudioSource.PlayClipAtPoint(chopSound, this.transform.position);
             Particle.Play();
             root.TakeDamage(attackDamage);
             currentCooldown = attackCooldown;

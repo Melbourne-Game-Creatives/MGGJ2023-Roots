@@ -159,6 +159,7 @@ MonoBehaviour:
   damageFromBranchPerSecond: 2
   healingFromBurrow: 4
   healthBar: {fileID: 6413069409535516253}
+  chopSound: {fileID: 8300000, guid: f8ba559aad1e04b4ba20366ecf1bf49a, type: 3}
   Particle: {fileID: 6608467577636263601}
 --- !u!65 &2431479711987103792
 BoxCollider:
