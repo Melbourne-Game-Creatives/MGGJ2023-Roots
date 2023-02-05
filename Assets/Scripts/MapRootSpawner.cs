@@ -51,7 +51,7 @@ public class MapRootSpawner : MonoBehaviour
     {
         while (true)
         {
-            timeBetweenSpawns *= 0.8f;
+            timeBetweenSpawns *= 0.9f;
             yield return new WaitForSeconds(15f);
         }
     }
