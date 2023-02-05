@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class MapRootSpawner : MonoBehaviour
@@ -11,6 +12,11 @@ public class MapRootSpawner : MonoBehaviour
     private void Awake()
     {
         timeToNextSpawn = timeBetweenSpawns;
+    }
+
+    private void Start()
+    {
+        StartCoroutine(IncreaseGrowthRateOverTime());   
     }
 
 
@@ -39,5 +45,14 @@ public class MapRootSpawner : MonoBehaviour
         GameObject newGO = Instantiate(MainRootPrefab, new Vector3(randomX, 0, randomZ), Quaternion.identity);
         newGO.transform.LookAt(Vector3.zero);
         newGO.GetComponent<RootSegment>().SetHealth(100f);
+    }
+
+    private IEnumerator IncreaseGrowthRateOverTime()
+    {
+        while (true)
+        {
+            timeBetweenSpawns *= 0.8f;
+            yield return new WaitForSeconds(15f);
+        }
     }
 }

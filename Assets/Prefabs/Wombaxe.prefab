@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectionQuad: {fileID: 1931671252688575567}
-  speed: 7
+  speed: 6
   attackDamage: 10
   attackCooldown: 1
   animator: {fileID: 3789643704967452670}

@@ -195,6 +195,8 @@ public class Wombaxe : MonoBehaviour, ISelectable
 
     public void Die()
     {
+        FindObjectOfType<AudioExclamation>().PlayDeathSound();
+
         UnitSelections.Instance.unitsSelected.Remove(this);
         print("Wombat dead!");
         Destroy(gameObject, 0.4f);
