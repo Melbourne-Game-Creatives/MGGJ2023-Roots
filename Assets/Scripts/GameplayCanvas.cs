@@ -28,7 +28,7 @@ public class GameplayCanvas : MonoBehaviour
         if (frenzyButton.interactable) return; // already enabled
 
         frenzyButton.interactable = true;
-        frenzyButton.transform.DOShakeScale(1f, 0.1f).SetDelay(0.5f).SetLoops(-1);
+        frenzyButton.transform.DOShakeScale(1f, 0.3f).SetDelay(0.5f).SetLoops(-1);
     }
 
     public void DisableFrenzyButton()
@@ -44,7 +44,7 @@ public class GameplayCanvas : MonoBehaviour
         if (growthButton.interactable) return; // already enabled
 
         growthButton.interactable = true;
-        growthButton.transform.DOShakeScale(1, 0.1f).SetDelay(0.5f).SetLoops(-1);
+        growthButton.transform.DOShakeScale(1, 0.3f).SetDelay(0.5f).SetLoops(-1);
     }
 
     public void DisableGrowthButton()
