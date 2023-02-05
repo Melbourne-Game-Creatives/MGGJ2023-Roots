@@ -34,6 +34,7 @@ public class Wombaxe : MonoBehaviour, ISelectable
     private IEnumerator axeStopCoroutine;
 
     public ParticleSystem Particle;
+    public ParticleSystem HealParticle;
 
     private void Start()
     {
@@ -73,6 +74,20 @@ public class Wombaxe : MonoBehaviour, ISelectable
 
     private void LateUpdate()
     {
+        if (healThisFrame)
+        {
+            if (!HealParticle.isPlaying)
+            {
+                HealParticle.Play();
+            }
+        }
+        else
+        {
+            if (HealParticle.isPlaying)
+            {
+                HealParticle.Stop();
+            }
+        }
         if (healThisFrame)
         {
             if (health < initialHealth)
