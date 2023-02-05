@@ -11,22 +11,34 @@ public class GameplayCanvas : MonoBehaviour
 
     public void EnableFrenzyButton()
     {
+        if (frenzyButton.interactable) return; // already enabled
+
         frenzyButton.interactable = true;
+        frenzyButton.transform.DOShakeScale(1f, 0.1f).SetDelay(0.5f).SetLoops(-1);
     }
 
     public void DisableFrenzyButton()
     {
+        if (!frenzyButton.interactable) return; // already disabled
+
         frenzyButton.interactable = false;
+        DOTween.Kill(frenzyButton.transform);
     }
 
     public void EnableGrowthButton()
     {
+        if (growthButton.interactable) return; // already enabled
+
         growthButton.interactable = true;
+        growthButton.transform.DOShakeScale(1, 0.1f).SetDelay(0.5f).SetLoops(-1);
     }
 
     public void DisableGrowthButton()
     {
+        if (!growthButton.interactable) return; // already disabled
+
         growthButton.interactable = false;
+        DOTween.Kill(growthButton.transform);
     }
 
     public void UpdateUI(float currentFrenzyCooldown, float frenzyCooldown, float currentGrowthCooldown, float growthCooldown)
