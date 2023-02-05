@@ -221,7 +221,7 @@ public class Wombaxe : MonoBehaviour, ISelectable
     {
         speed = 30f;
         attackDamage = 500f;
-        attackCooldown = 0.1f;
+        attackCooldown = 0.25f;
         this.transform.localScale = new Vector3(2f, 2f, 2f);
     }
 

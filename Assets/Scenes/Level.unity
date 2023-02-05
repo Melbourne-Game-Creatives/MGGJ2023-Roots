@@ -1676,6 +1676,11 @@ PrefabInstance:
       objectReference: {fileID: 1263515952}
     - target: {fileID: 5313455449132006184, guid: 0fc11405107d06e44a6eb6a68da021c3,
         type: 3}
+      propertyPath: frenzyCooldown
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 5313455449132006184, guid: 0fc11405107d06e44a6eb6a68da021c3,
+        type: 3}
       propertyPath: gameplayCanvas
       value: 
       objectReference: {fileID: 1712298551}
