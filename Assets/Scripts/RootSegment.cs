@@ -105,6 +105,8 @@ public class RootSegment : MonoBehaviour
 
     private void AffectCell(HexCell cell)
     {
+        if (!cell) return;
+        
         cell.TerrainTypeIndex = 3;
         if (cell.Color.r > 0.2f)
         {

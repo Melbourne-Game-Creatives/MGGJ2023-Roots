@@ -89,6 +89,10 @@ public class HexGrid : MonoBehaviour
 	{
 		position = transform.InverseTransformPoint(position);
 		var coordinates = HexCoordinates.FromPosition(position);
+		if (coordinates.X > chunkCountX * HexMetrics.ChunkSizeX ||
+		    coordinates.X > chunkCountX * HexMetrics.ChunkSizeX ||
+		    coordinates.X < 0 ||
+		    coordinates.Z < 0) return null;
 		var index = coordinates.X + coordinates.Z * _cellCountX + coordinates.Z / 2;
 		return cells[index];
 	}
