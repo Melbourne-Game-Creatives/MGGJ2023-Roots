@@ -66,6 +66,13 @@ public class Burrow : MonoBehaviour
         SceneManager.LoadScene("Level");
     }
 
+
+    public void OnQuit()
+    {
+        Application.Quit();
+    }
+    
+
     public void WombaxeFrenzy()
     {
         gameplayCanvas.DisableFrenzyButton();
