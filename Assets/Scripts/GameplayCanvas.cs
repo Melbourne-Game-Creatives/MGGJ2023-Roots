@@ -9,9 +9,19 @@ public class GameplayCanvas : MonoBehaviour
     [SerializeField] private Button growthButton;
     [SerializeField] private Image frenzyBar;
     [SerializeField] private Image growthBar;
+    [SerializeField] private GameObject introGO;
+    [SerializeField] private GameObject introTxtGO;
     
     private bool helpOn = true;
     public GameObject KeyHelp;
+
+
+    private void Awake()
+    {
+        introTxtGO.transform.DOShakeScale(1f);
+        Invoke("RemoveIntro", 3);
+    }
+
 
     public void Update()
     {
@@ -74,5 +84,11 @@ public class GameplayCanvas : MonoBehaviour
     private bool DirectionPressed()
     {
         return Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D);
+    }
+
+
+    private void RemoveIntro()
+    {
+        introGO.transform.DOMoveX(10000f, 0.8f);
     }
 }
