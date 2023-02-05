@@ -15,6 +15,7 @@ public class HexCell : MonoBehaviour {
 		set
 		{
 			_colour = value;
+			Refresh();
 		}
 	}
 

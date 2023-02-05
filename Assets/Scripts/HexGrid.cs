@@ -85,7 +85,7 @@ public class HexGrid : MonoBehaviour
 		CreateCells();
 	}
 
-	private HexCell GetCell(Vector3 position)
+	public HexCell GetCell(Vector3 position)
 	{
 		position = transform.InverseTransformPoint(position);
 		var coordinates = HexCoordinates.FromPosition(position);

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
@@ -48,6 +49,11 @@ public class RootSegment : MonoBehaviour
         CheckHovelReached();
     }
 
+    private void Start()
+    {
+        AffectMap(transform);
+    }
+
 
     private void Update()
     {
@@ -73,11 +79,47 @@ public class RootSegment : MonoBehaviour
     {
         health = _health;
     }
-    
+
+    private void AffectMap(Transform tr/*, RootSegment segment*/)
+    {
+        var map = GameObject.Find("HexGrid").GetComponent<HexGrid>();
+
+        var cells = new HashSet<HexCell>();
+        cells.Add(map.GetCell(tr.position));
+        
+        // Tried to add branch point and growth point,
+        // but because it isn't scaled up yet they are all the same point. Not enough time to resolve this.
+        
+        // foreach (var branchPoint in segment.branchPointTrs)
+        // {
+        //     var point = segment.transform.position;
+        //     cells.Add(map.GetCell(point));
+        // }
+        // cells.Add(map.GetCell(segment.growthPointTr.position));
+        
+        foreach (var cell in cells)
+        {
+            AffectCell(cell);
+        }
+    }
+
+    private void AffectCell(HexCell cell)
+    {
+        cell.TerrainTypeIndex = 3;
+        if (cell.Color.r > 0.2f)
+        {
+            var newColor = cell.Color - new Color(0.3f, 0.3f, 0.3f);
+            if (newColor.r < 0.2f)
+            {
+                newColor = new Color(0.2f, 0.2f, 0.2f);
+            }
+            cell.Color = newColor;
+        }
+    }
     
     public bool IsInMap(Transform tr)
     {
-        return Physics.Raycast(growthPointTr.position + Vector3.up, Vector3.down, 100f, 1 << LayerMask.NameToLayer("Ground"));
+        return Physics.Raycast(tr.position + Vector3.up, Vector3.down, 100f, 1 << LayerMask.NameToLayer("Ground"));
     }
 
 
@@ -132,7 +174,10 @@ public class RootSegment : MonoBehaviour
         }
 
         GameObject newSegmentGO = Instantiate(rootPrefabs.getRandom(), growthPointTr.position, effectiveRotation, growthPointTr);
-        newSegmentGO.GetComponent<RootSegment>().init(generation);
+        var rootSegment = newSegmentGO.GetComponent<RootSegment>();
+        rootSegment.init(generation);
+        
+        // AffectMap(growthPointTr, rootSegment);
     }
 
 
@@ -143,7 +188,10 @@ public class RootSegment : MonoBehaviour
             if (ShouldBranch() && IsInMap(branchPointTr))
             {
                 GameObject newSegmentGO = Instantiate(rootPrefabs.getRandom(), branchPointTr.position, branchPointTr.rotation, branchPointTr);
-                newSegmentGO.GetComponent<RootSegment>().init(generation + 1);
+                var rootSegment = newSegmentGO.GetComponent<RootSegment>();
+                rootSegment.init(generation + 1);
+                
+                // AffectMap(branchPointTr, rootSegment);
             }
         }
     }
