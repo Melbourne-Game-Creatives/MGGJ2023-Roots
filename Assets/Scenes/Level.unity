@@ -1906,11 +1906,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1479819749}
-    - target: {fileID: 3401862489721291431, guid: ed7b86752f3216c4fb7be42029c93eb8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3401862491192269496, guid: ed7b86752f3216c4fb7be42029c93eb8,
         type: 3}
       propertyPath: m_Name
@@ -2026,16 +2021,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1479819749}
-    - target: {fileID: 6758813125856752492, guid: ed7b86752f3216c4fb7be42029c93eb8,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: WombaxeGrow
-      objectReference: {fileID: 0}
-    - target: {fileID: 8810695041029970900, guid: ed7b86752f3216c4fb7be42029c93eb8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed7b86752f3216c4fb7be42029c93eb8, type: 3}
 --- !u!1001 &5313935841510638997
